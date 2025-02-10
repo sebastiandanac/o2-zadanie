@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { Input } from '@/components/ui/atoms/input'
 import { CircleAlert, CircleHelp } from 'lucide-react'
+import { PasswordInput } from '@/components/ui/atoms/password-input'
 
 export default function InputVariants() {
   const states = [
@@ -50,6 +51,10 @@ export default function InputVariants() {
     {
       title: 'With value',
       input: <Input value="Value" onChange={() => ''} />,
+    },
+    {
+      title: 'Password',
+      input: <PasswordInput />,
     },
   ]
 
