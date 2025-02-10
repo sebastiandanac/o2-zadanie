@@ -20,7 +20,6 @@ export default function FormInputPlayground() {
   const [hasLabel, setHasLabel] = useState(false)
   const [isOptional, setIsOptional] = useState(false)
   const [hasDescription, setHasDescription] = useState(false)
-  const [hasError, setHasError] = useState(false)
 
   return (
     <div className="flex flex-col gap-10">
@@ -69,17 +68,19 @@ export default function FormInputPlayground() {
           label="Description"
           id="description"
         />
-        <CheckboxWithLabel
-          value={hasError}
-          setValue={setHasError}
-          label="Error"
-          id="error"
-        />
       </div>
 
       <div className="flex flex-col gap-2 p-8 bg-white rounded-md">
         <div className="flex items-center gap-2">
-          {hasLabel && <Label>Label</Label>}
+          {hasLabel && (
+            <Label
+              className={cn(
+                state === 'error' && 'text-content-onNeutral-danger',
+              )}
+            >
+              Label
+            </Label>
+          )}
 
           {isOptional && (
             <span className="text-content-onNeutral-low font-labelSm text-labelSm leading-labelSm tracking-labelSm">
@@ -89,7 +90,6 @@ export default function FormInputPlayground() {
         </div>
 
         <Input
-          role="input"
           state={state}
           disabled={disabled}
           nativeStates={focused ? 'focused' : undefined}
@@ -102,7 +102,7 @@ export default function FormInputPlayground() {
           </p>
         )}
 
-        {hasError && (
+        {state === 'error' && (
           <p
             className={cn('text-sm font-medium text-content-onNeutral-danger')}
           >

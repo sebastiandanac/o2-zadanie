@@ -15,6 +15,7 @@ import { CircleAlert } from 'lucide-react'
 type Props = {
   name: string
   label?: string
+  placeholder?: string
   input?: {
     placeholder?: string
     type: React.ComponentProps<'input'>['type']
@@ -39,7 +40,7 @@ export default function FormInput({
       render={({ field, fieldState }) => (
         <FormItem>
           <div className="flex items-center gap-2">
-            {label && <FormLabel>{label}</FormLabel>}
+            {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
 
             {!required && (
               <span className="text-content-onNeutral-low font-labelSm text-labelSm leading-labelSm tracking-labelSm">
@@ -53,8 +54,10 @@ export default function FormInput({
               <Input
                 aria-invalid={fieldState.error ? 'true' : 'false'}
                 aria-describedby={
-                  fieldState.error ? fieldState.error.message : undefined
+                  fieldState.error ? `error-${name}` : undefined
                 }
+                id={name}
+                aria-label={input?.placeholder || label || name}
                 required={required}
                 placeholder={input?.placeholder}
                 type={input?.type ? input.type : 'text'}
@@ -68,6 +71,7 @@ export default function FormInput({
                   <CircleAlert
                     size={16}
                     className="text-content-onNeutral-danger"
+                    aria-hidden="true"
                   />
                 </div>
               )}
@@ -75,7 +79,7 @@ export default function FormInput({
           </FormControl>
 
           {description && <FormDescription>{description}</FormDescription>}
-          <FormMessage />
+          <FormMessage id={`error-${name}`} />
         </FormItem>
       )}
     />
