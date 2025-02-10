@@ -3,9 +3,7 @@ import * as React from 'react'
 import { Input } from '@/components/ui/atoms/input'
 import { CircleAlert, CircleHelp } from 'lucide-react'
 
-type Props = {}
-
-export default function InputVariants({}: Props) {
+export default function InputVariants() {
   const states = [
     {
       title: 'Basic',

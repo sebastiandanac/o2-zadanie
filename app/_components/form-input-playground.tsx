@@ -4,7 +4,6 @@ import { Input, InputVariantsProps } from '@/components/ui/atoms/input'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
-import { boolean } from 'zod'
 import CheckboxWithLabel from '@/components/ui/checkbox-with-label'
 import {
   Select,
@@ -14,9 +13,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-type Props = {}
-
-export default function FormInputPlayground({}: Props) {
+export default function FormInputPlayground() {
   const [state, setState] = useState<InputVariantsProps['state']>('default')
   const [disabled, setDisabled] = useState(false)
   const [focused, setFocused] = useState(false)

@@ -12,9 +12,7 @@ const formSchema = z.object({
   phone: z.string().optional(),
 })
 
-type Props = {}
-
-export default function ContactForm({}: Props) {
+export default function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

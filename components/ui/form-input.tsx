@@ -59,7 +59,6 @@ export default function FormInput({
                 placeholder={input?.placeholder}
                 type={input?.type ? input.type : 'text'}
                 state={fieldState.error ? 'error' : 'default'}
-                role="input"
                 className="pr-10"
                 {...field}
               />
